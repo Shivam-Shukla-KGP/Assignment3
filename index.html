@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="css.css"/>
+<link rel="icon" href="a.png" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<title>
+LeafMatch
+</title>
+</head>
+<body background="background.jpg">
+<img id="img1" src="a.png" onClick="im1()"/>
+<img id="img2" src="a.png" onClick="im2()"/>
+<img id="img3" src="a.png" onClick="im3()"/>
+<img id="img4" src="a.png" onClick="im4()"/>
+<img id="img5" src="a.png" onClick="im5()"/>
+<img id="img6" src="a.png" onClick="im6()"/>
+<img id="img7" src="a.png" onClick="im7()"/>
+<img id="img8" src="a.png" onClick="im8()"/>
+<img id="img9" src="a.png" onClick="im9()"/>
+<img id="img10" src="a.png" onClick="im10()"/>
+<div id="cpr">
+<audio  controls autoplay  style="display:none">
+  <source src="faded.mp3" type="audio/mp3">
+</audio>
+&copy created by Shivam Shukla
+</div>
+<div id="instruction" style="display:none">
+Hello!Welcome to the game named LeafMatch.</br>
+So,this game is basically about matching </br>
+the tiles having same pictures of leafs.</br>
+On Matching the tiles correctly you score 100 points.</br>
+However on a wrong match you lose 20 points.</br>
+The score is simultaneously updated at each of</br> 
+your chance.While clicking on an image it is</br> 
+suggested to click just a bit longer.Click on</br>
+the button on the right below corner given below.</br>
+</br>
+</div>
+<input type="button" value="Start" id="b1"/>
+<div id="scorer" >Score is: </div>
+
+<script type="text/javascript">
+var x=0,z=0;
+$('audio').prop('volume','0.1');
+var x1=0,xsab=0;
+var score=0;
+var av=new Array(2);
+var ranar=new Array(10);
+var ar=new Array(5);
+var ar1=new Array(10);
+var ab=document.getElementById('scorer');
+ar[0]="leaf.jpg";
+ar[1]="leaf2.jpg";
+ar[2]="leaf3.png";
+ar[3]="leaf4.jpg";
+ar[4]="leaf5.png";
+var abcd=10;
+var length=document.images.length;
+for(k=0;k<abcd;k++)
+{
+var y=10*Math.random();
+y=y/2;
+y=(Math.ceil(y)-1);
+if(y==1)
+{var c=0;
+ for(d=0;d<10;d++)
+ {if(ranar[d]==1)
+     {c++;
+	 }
+ }
+ if(c!=2)
+ {ranar[k]=1;
+ }
+ if(c==2)
+ {k--;
+ }
+ }
+ if(y==2)
+{var c=0;
+ for(d=0;d<10;d++)
+ {if(ranar[d]==2)
+     {c++;
+	 }
+ }
+ if(c!=2)
+ {ranar[k]=2;
+ }
+ if(c==2)
+ {k--;
+ }
+ }
+ if(y==3)
+{var c=0;
+ for(d=0;d<10;d++)
+ {if(ranar[d]==3)
+     {c++;
+	 }
+ }
+ if(c!=2)
+ {ranar[k]=3;
+ }
+ if(c==2)
+ {k--;
+ }
+ }
+if(y==4)
+{var c=0;
+ for(d=0;d<10;d++)
+ {if(ranar[d]==4)
+     {c++;
+	 }
+ }
+ if(c!=2)
+ {ranar[k]=4;
+ }
+ if(c==2)
+ {k--;
+ }
+ }
+if(y==0)
+{var c=0;
+ for(d=0;d<10;d++)
+ {if(ranar[d]==0)
+     {c++;
+	 }
+ }
+ if(c!=2)
+ {ranar[k]=0;
+ }
+ if(c==2)
+ {k--;
+ }
+} 
+}
+for(i2=0;i2<10;i2++)
+{ar1[i2]=ar[(ranar[i2])];
+}
+ function doit(i1)
+ {
+	    setTimeout(function(){
+		$('#img'+i1).attr('src',ar1[i1-1]);}
+		, 250);
+		$("#img"+i1).css('animation-name', 'cf3FadeInOut').css('animation-timing-function','ease-in-out').css('animation-iteration-count','1').css('animation-duration','0.5s').css('animation-direction','alternate');     
+        $("#img"+i1).width('10%');
+		var imgWidth = $('#img'+i1).width(); 
+		$('#img'+i1).height(imgWidth);
+		
+        if(x1==ar1[i1-1])
+         {  
+		    score+=100;
+			ab.innerHTML="Score:"+score;
+			setTimeout(function(){for(lk=1;lk<=10;lk++)
+			  {if(x1==ar1[lk-1])
+				$('#img'+lk).css('display','none');
+               }
+	          x1=0;
+			},700);
+        }
+ else if(x1==0)
+ {x1=ar1[i1-1];
+   ab.innerHTML="Score:"+score;
+ }
+ else if(x1!=0 && x1!=ar1[i1-1])
+ {score-=20;
+ ab.innerHTML="score:"+score;
+ setTimeout(function(){
+    $('img').attr("src",'a.png');
+}, 700);
+  x1=0;
+ }
+ setTimeout(function(){$("#img"+i1).css('animation-name', 'cf3');},700);
+ }
+function im1()
+{ var v=1; 
+   doit(v); 
+}
+function im2()
+{var v=2;
+ 
+   doit(v);
+}
+function im3()
+{var v=3;
+ doit(v);
+   
+}
+function im4()
+{var v=4;
+ 
+   doit(v);
+}
+function im5()
+{var v=5; 
+   doit(v);
+
+   }
+function im6()
+{var v=6;
+ 
+   doit(v);
+
+   }
+function im7()
+{var v=7;
+ 
+   doit(v);
+
+   }
+function im8()
+{var v=8;
+ 
+   doit(v);
+   }
+function im9()
+{var v=9;
+ 
+   doit(v);
+}
+function im10()
+{var v=10;
+ 
+   doit(v);
+   }
+ 
+  alert('Document ready');
+  $('#instruction').fadeIn(2000); 
+  $('#b1').fadeIn(2000);
+ $('#b1').click(function(){
+ $('#b1,#instruction').fadeOut(2000);
+ $('img,#scorer').fadeIn(4000);
+ });  
+ </script>
+
+</body>
+</html>
